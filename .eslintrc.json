@@ -1,0 +1,7 @@
+{
+  "extends": "fullstack",
+  "root": true,
+  "parserOptions": {
+    "ecmaVersion": 2017
+}
+}
