@@ -1,24 +1,27 @@
-import React, { Component, Fragment } from "react";
-import { Link, withRouter } from "react-router-dom";
-import { Nav, Navbar, NavItem } from "react-bootstrap";
+import React, { Component, Fragment } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { Nav, Navbar, NavItem } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { LinkContainer } from 'react-router-bootstrap';
+
 import { Auth } from "aws-amplify";
 
-import "./App.css";
-import Routes from "./Routes";
-import { LinkContainer } from "react-router-bootstrap";
+import { signOut, setAuthenticated } from './store/auth'
+
+import './App.css';
+import Routes from './Routes';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isAuthenticated: false,
       isAuthenticating: true
     };
   }
   async componentDidMount() {
     try {
       if (await Auth.currentSession()) {
-        this.userHasAuthenticated(true);
+        this.props.setAuthenticated(true)
       }
     }
     catch (e) {
@@ -26,37 +29,37 @@ class App extends Component {
         alert(e);
       }
     }
-
     this.setState({ isAuthenticating: false });
   }
   handleLogout = async event => {
-    await Auth.signOut();
-    this.userHasAuthenticated(false);
+    this.props.signOut()
     this.props.history.push("/login");
   }
 
-  userHasAuthenticated = authenticated => {
-    this.setState({ isAuthenticated: authenticated });
+  handleHouse = event => {
+    // console.log(this.props)
+    this.props.history.push("/house");
   }
+
   render() {
-    const childProps = {
-      isAuthenticated: this.state.isAuthenticated,
-      userHasAuthenticated: this.userHasAuthenticated
-    };
     return (
       !this.state.isAuthenticating &&
       <div className="App container">
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">Scratch</Link>
+              <Link to="/">City</Link>
+            </Navbar.Brand>
+            <Navbar.Brand>
+              <Link to="/house">House</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              {this.state.isAuthenticated
-                ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
+              {this.props.isAuthenticated
+                ?
+                <NavItem onClick={this.handleLogout}>Logout</NavItem>
                 : <Fragment>
                   <LinkContainer to="/signup">
                     <NavItem>Signup</NavItem>
@@ -69,10 +72,19 @@ class App extends Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <Routes childProps={childProps} />
+        <Routes />
       </div>
     );
   }
 }
 
-export default withRouter(App);
+const mapDispatch = { signOut, setAuthenticated }
+
+const mapState = (state) => {
+  return {
+    isAuthenticated: state.isAuthenticated
+  };
+};
+
+export default withRouter(connect(mapState, mapDispatch)(App))
+

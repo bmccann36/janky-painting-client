@@ -1,0 +1,21 @@
+.LandingPage .lander {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.LandingPage .lander h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+
+.LandingPage .lander p {
+  color: #999;
+}
+
+.alpha {
+  background-color: orange;
+}
+
+.beta {
+  background-color: blue;
+}

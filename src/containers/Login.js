@@ -1,17 +1,19 @@
-import React, { Component } from "react";
-import {  FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import { Auth } from "aws-amplify";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { signIn } from '../store/auth'
 
-import "./Login.css";
-import LoaderButton from "../components/LoaderButton";
+import './Login.css';
+import LoaderButton from '../components/LoaderButton';
 
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoading: false,
-      email: "",
-      password: ""
+      email: '',
+      password: ''
     };
   }
 
@@ -29,9 +31,8 @@ export default class Login extends Component {
     event.preventDefault();
     this.setState({ isLoading: true });
     try {
-      await Auth.signIn(this.state.email, this.state.password);
-      this.props.userHasAuthenticated(true);
-      this.props.history.push("/");
+      await this.props.signIn(this.state.email, this.state.password)
+      this.props.history.push('/');
     } catch (e) {
       alert(e.message);
     }
@@ -72,3 +73,12 @@ export default class Login extends Component {
     );
   }
 }
+
+const mapDispatch = { signIn }
+
+const mapState = (state) => {
+  return {
+    isAuthenticated: state.isAuthenticated
+  };
+};
+export default connect(mapState, mapDispatch)(withRouter(Login))
