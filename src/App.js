@@ -15,7 +15,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //   isAuthenticated: false,
       isAuthenticating: true
     };
   }
@@ -37,18 +36,22 @@ class App extends Component {
     this.props.history.push("/login");
   }
 
+  handleHouse = event => {
+    // console.log(this.props)
+    this.props.history.push("/house");
+  }
+
   render() {
-    // const childProps = {
-    //   isAuthenticated: this.state.isAuthenticated,
-    //   userHasAuthenticated: this.userHasAuthenticated
-    // };
     return (
       !this.state.isAuthenticating &&
       <div className="App container">
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">Scratch</Link>
+              <Link to="/">City</Link>
+            </Navbar.Brand>
+            <Navbar.Brand>
+              <Link to="/house">House</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
@@ -83,5 +86,5 @@ const mapState = (state) => {
   };
 };
 
-export default connect(mapState, mapDispatch)(withRouter(App))
+export default withRouter(connect(mapState, mapDispatch)(App))
 

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
 import { connect } from 'react-redux';
-import "./Home.css";
+import "./LandingPage.css";
 
 import { setColor } from '../store/color'
 
-class Home extends Component {
+class LandingPage extends Component {
   constructor() {
     super()
   }
@@ -19,9 +19,9 @@ class Home extends Component {
   render() {
     // console.log(this.props)
     return (
-      <div className="Home">
+      <div className="LandingPage">
         <div className="lander">
-          <h1>Usage</h1>
+          <h1>Landing Page</h1>
           <p>content pending</p>
           <div className={this.props.color}>
             <p> alpha content </p>
@@ -47,5 +47,5 @@ const mapState = (state) => {
   };
 };
 
-export default connect(mapState, mapDispatch)(Home)
+export default connect(mapState, mapDispatch)(LandingPage)
 

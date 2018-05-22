@@ -1,14 +1,16 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-import Home from "./containers/Home";
-import NotFound from "./containers/NotFound";
-import Login from "./containers/Login";
-import AppliedRoute from "./components/AppliedRoute";
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import LandingPage from './containers/LandingPage';
+import NotFound from './containers/NotFound';
+import Login from './containers/Login';
+import House from './containers/House';
 
-export default ({ childProps }) =>
+export default () =>
   <Switch>
-    <AppliedRoute path="/" exact component={Home} props={childProps} />
-    <AppliedRoute path="/login" exact component={Login} props={childProps} />
-    { /* Finally, catch all unmatched routes */ }
+    <Route path="/house" component={House} />
+    <LandingPage exact path="/" />
+    <Login exact path="/login" />
+
+    { /* Finally, catch all unmatched routes */}
     <Route component={NotFound} />
   </Switch>;
