@@ -53,6 +53,9 @@ class App extends Component {
             <Navbar.Brand>
               <Link to="/house">House</Link>
             </Navbar.Brand>
+            <Navbar.Brand>
+              <Link to="/news">News</Link>
+            </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
