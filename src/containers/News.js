@@ -2,14 +2,16 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchPosts } from '../store/posts'
 
 import './News.css';
 import Post from '../components/Post'
 
 
 class News extends Component {
-  constructor(props) {
-    super(props)
+
+  componentDidMount() {
+    fetchPosts()
   }
 
   render() {
@@ -17,7 +19,10 @@ class News extends Component {
     return (
       posts.map(post => {
         return (
-          <div className="posts-container">
+          <div
+            className="posts-container"
+            key={post['post-time']}
+          >
             <Post
               post={post}
             />
@@ -28,7 +33,7 @@ class News extends Component {
   }
 }
 
-// const mapDispatch = { setColor }
+const mapDispatch = fetchPosts
 
 const mapState = (state) => {
   return {
@@ -36,5 +41,5 @@ const mapState = (state) => {
   };
 };
 
-export default connect(mapState)(News)
+export default connect(mapState, mapDispatch)(News)
 

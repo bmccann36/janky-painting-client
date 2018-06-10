@@ -6,9 +6,6 @@ import "./LandingPage.css";
 import { setColor } from '../store/color'
 
 class LandingPage extends Component {
-  constructor() {
-    super()
-  }
 
   handleClick(event) {
     event.preventDefault();

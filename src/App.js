@@ -48,10 +48,10 @@ class App extends Component {
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">City</Link>
+              <Link to="/">Home</Link>
             </Navbar.Brand>
             <Navbar.Brand>
-              <Link to="/house">House</Link>
+              <Link to="/house">Gallery</Link>
             </Navbar.Brand>
             <Navbar.Brand>
               <Link to="/news">News</Link>
