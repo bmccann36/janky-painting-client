@@ -11,7 +11,8 @@ import Post from '../components/Post'
 class News extends Component {
 
   componentDidMount() {
-    fetchPosts()
+    //TO DO   FETCH THE POSTS
+    // fetchPosts()
   }
 
   render() {
@@ -41,5 +42,5 @@ const mapState = (state) => {
   };
 };
 
-export default connect(mapState, mapDispatch)(News)
+export default connect(mapState, null)(News)
 

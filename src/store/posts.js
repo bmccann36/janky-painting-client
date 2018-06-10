@@ -12,7 +12,18 @@ export const loadPosts = posts => ({ type: LOAD_POSTS, posts: posts });
 
 /* ------------       REDUCERS     ------------------ */
 
-const initialState = []
+const initialState = [
+  {
+    title: 'title will go here',
+    date: 'date will go here',
+    content: 'content will go here'
+  },
+  {
+    title: 'title will go here',
+    date: 'date will go here',
+    content: 'content will go here'
+  }
+]
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -27,8 +38,7 @@ export default function reducer(state = initialState, action) {
 
 /* ------------   THUNK CREATORS     ------------------ */
 
-
-const route = 'https://bgw0sh2hxj.execute-api.us-east-1.amazonaws.com/dev/posts'
+const route = ''/* TBD */
 
 export const fetchPosts = () => dispatch => {
   axios.get(route)
