@@ -42,5 +42,5 @@ const mapState = (state) => {
   };
 };
 
-export default connect(mapState, null)(News)
+export default connect(mapState, mapDispatch)(News)
 

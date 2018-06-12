@@ -5,6 +5,9 @@ import "./LandingPage.css";
 
 import { setColor } from '../store/color'
 
+const image = require('../assets/toilet.jpeg')
+
+
 class LandingPage extends Component {
 
   handleClick(event) {
@@ -18,19 +21,12 @@ class LandingPage extends Component {
     return (
       <div className="LandingPage">
         <div className="lander">
-          <h1>Landing Page</h1>
+          <h1>Janky Painting</h1>
+          <img src={image} />
           <p>content pending</p>
-          <div className={this.props.color}>
-            <p> alpha content </p>
-          </div>
+
         </div>
-        <Button
-          block
-          bsSize="large"
-          type="submit"
-          onClick={this.handleClick.bind(this)}
-        > change color
-        </Button>
+
       </div>
     );
   }

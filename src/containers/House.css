@@ -1,9 +1,9 @@
-.House {
+.gallery-container {
   background-color: lightblue;
   height: 30em;
+  text-align: center;
 }
 
-/* .House .item  {
-   margin: 1em;
-  background-color:orange;
-} */
+.text-area {
+  padding-top: 10%;
+}

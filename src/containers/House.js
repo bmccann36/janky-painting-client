@@ -18,8 +18,10 @@ class House extends Component {
     // })
     // console.log(this.props)
     return (
-      <div className="House">
-        <Device />
+      <div className="gallery-container">
+        <div className="text-area">
+          <p> no images yet </p>
+        </div>
       </div>
     );
   }
