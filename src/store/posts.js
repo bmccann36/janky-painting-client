@@ -37,7 +37,7 @@ export default function reducer(state = initialState, action) {
 
 /* ------------   THUNK CREATORS     ------------------ */
 
-const route = 'https://jo6tcazfqb.execute-api.us-east-1.amazonaws.com/staging/posts'
+const route = '' //  ! TO IMPLEMENT !
 
 export const fetchPosts = () => dispatch => {
   axios.get(route)

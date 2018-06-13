@@ -10,10 +10,6 @@ import Post from '../components/Post'
 
 class News extends Component {
 
-  componentDidMount() {
-    //TO DO   FETCH THE POSTS
-    // fetchPosts()
-  }
 
   render() {
     const { posts } = this.props
@@ -42,5 +38,5 @@ const mapState = (state) => {
   };
 };
 
-export default connect(mapState, mapDispatch)(News)
+export default connect(mapState,  mapDispatch)(News)
 
